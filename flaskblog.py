@@ -1,8 +1,9 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
 from image import get_images
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+import os
+# from flask_sqlalchemy import SQLAlchemy
+# from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '66c3c4b36ad416f15a6bd7b94edaf265'
@@ -44,4 +45,4 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
